@@ -1,3 +1,4 @@
+'use strict'
 /**
  * Класс UserWidget отвечает за
  * отображение информации о имени пользователя
@@ -12,7 +13,7 @@ class UserWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor(element){
-
+    this.element = element;
   }
 
   /**
@@ -23,6 +24,9 @@ class UserWidget {
    * авторизованного пользователя
    * */
   update(){
-
+    if (!User.current()) {
+      return 
+    }
+    this.element.querySelector('.user-name').textContent = User.current().name;
   }
 }
